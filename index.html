@@ -1,388 +1,482 @@
 <!DOCTYPE html>
-<htmleng lang="en">
-
+<html lang="en">
 <head>
-    <meta name="google-site-verification" content="G1XgYwlPVdwcB_Foy5aIrRCTNTQrhfoLgWeBTe-xQaI" />
-    <meta charset="uTF-8"/>
-    <meta name="viewport",
-    content="width=device=width",
-    initial-scale="1.0" />
-    <title>web</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="google-site-verification" content="G1XgYwlPVdwcB_Foy5aIrRCTNTQrhfoLgWeBTe-xQaI" />
+  <title>De Hasty — Official</title>
+  <style>
+    /* ---------- Reset ---------- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
 
+    /* ---------- Colors & tokens ---------- */
+    :root{
+      --accent: orangered;
+      --primary: cornflowerblue;
+      --bg-overlay: rgba(135,206,235,0.45);
+      --muted: #333;
+      --glass: rgba(255,255,255,0.85);
+      --card-radius: 12px;
+      --max-width: 1100px;
+    }
+
+    /* ---------- Page background ---------- */
+    body {
+      background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url("IMAGES/bg.jpg") center/cover fixed no-repeat;
+      color: var(--muted);
+      line-height: 1.45;
+      padding-bottom: 4rem;
+    }
+
+    /* ---------- Layout ---------- */
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 1rem; }
+
+    /* ---------- Header ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(90deg, rgba(255,255,255,0.85), rgba(255,255,255,0.7));
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+    .nav-inner { display:flex; align-items:center; gap:1rem; padding:0.6rem 1rem; max-width: var(--max-width); margin: 0 auto; }
+    .logo { display:flex; align-items:center; gap:0.75rem; text-decoration:none; color:inherit; }
+    .logo img { width:56px; height:56px; border-radius:50%; object-fit:cover; box-shadow:0 4px 12px rgba(0,0,0,0.12); }
+    .brand { font-weight:700; color: var(--accent); font-size:1.1rem; letter-spacing:0.6px; }
+
+    nav { margin-left:auto; display:flex; gap:0.6rem; align-items:center; }
+    .nav-link { text-decoration:none; color:var(--muted); padding:0.5rem 0.8rem; border-radius:8px; transition:background .18s, color .18s; font-weight:600; font-size:0.95rem;}
+    .nav-link:hover { background: rgba(0,0,0,0.06); color: #111; }
+
+    .menu-btn { display:none; background:darkmagenta; color:white; border:none; padding:0.5rem 0.75rem; border-radius:8px; cursor:pointer; }
+
+    /* ---------- Hero ---------- */
+    .hero { padding:2rem 0; display:grid; grid-template-columns: 1fr 360px; gap:1.2rem; align-items:center; max-width: var(--max-width); margin: 1rem auto; }
+    .hero-left h1{ color:var(--accent); font-size:2.25rem; margin-bottom:0.6rem; }
+    .hero-left p{ font-size:1.05rem; color:#1f1f1f; margin-bottom:0.9rem; }
+    .hero-card { background: var(--glass); border-radius: 14px; padding:1rem; display:flex; flex-direction:column; gap:0.6rem; align-items:center; box-shadow:0 10px 30px rgba(0,0,0,0.06); }
+    .hero-card img{ width:100%; height:auto; border-radius:10px; object-fit:cover; }
+    .hero-meta { display:flex; gap:0.6rem; align-items:center; }
+
+    /* ---------- Banner (replaces marquee) ---------- */
+    .banner { width:100%; overflow:hidden; margin: 0.5rem auto; background: rgba(5,58,9,0.72); color:#fff; padding:0.6rem 0; border-radius:8px; }
+    .banner p { white-space:nowrap; display:inline-block; animation: marquee 12s linear infinite; font-weight:700; }
+    @keyframes marquee { 0% { transform: translateX(100%);} 100% { transform: translateX(-100%);} }
+
+    /* ---------- Sections ---------- */
+    section { padding:1.6rem 0; }
+    section h2 { color:var(--accent); font-size:1.4rem; margin-bottom:0.6rem; }
+
+    /* ---------- Music grid ---------- */
+    .music-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.25rem; align-items:start; }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.86));
+      border-radius: var(--card-radius);
+      padding:0.9rem;
+      overflow:hidden;
+      box-shadow:0 8px 22px rgba(0,0,0,0.08);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow:0 20px 40px rgba(0,0,0,0.12); }
+    .card img { width:100%; height:200px; object-fit:cover; border-radius:10px; }
+    .card h3 { color: orangered; font-size:1.1rem; margin:0.6rem 0 0.2rem; }
+    .card p { color:brown; margin-bottom:0.5rem; font-weight:600; }
+    .meta-row { display:flex; justify-content:space-between; align-items:center; gap:0.5rem; flex-wrap:wrap; }
+    .audiomack{ display:inline-flex; gap:8px; align-items:center; text-decoration:none; color:#111; font-weight:700; }
+    .audiomack img{ width:32px; height:32px; object-fit:cover; border-radius:6px; }
+
+    audio { width:100%; margin-top:0.6rem; outline:none; }
+
+    /* ---------- Videos (embeds) ---------- */
+    .video-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:1rem; }
+    .video { border-radius:10px; overflow:hidden; box-shadow:0 8px 22px rgba(0,0,0,0.08); background:#000; }
+    .video iframe { width:100%; height:180px; display:block; border:0; }
+
+    /* ---------- Socials & contact ---------- */
+    .socials { display:flex; gap:0.6rem; align-items:center; flex-wrap:wrap; }
+    .social-btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.55rem 0.9rem; border-radius:10px; background:var(--primary); color:#fff; text-decoration:none; font-weight:700; box-shadow:0 8px 20px rgba(0,0,0,0.08); }
+    .contact { background: rgba(255,255,255,0.92); padding:1rem; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.06); }
+    .form-row { display:flex; gap:0.6rem; margin-bottom:0.6rem; }
+    .form-row input, .form-row textarea { flex:1; padding:0.6rem; border-radius:8px; border:1px solid rgba(0,0,0,0.08); font-size:0.95rem; }
+    .btn-primary { background:darkmagenta; color:white; padding:0.6rem 0.9rem; border:none; border-radius:10px; cursor:pointer; font-weight:700; }
+    .muted-note { font-size:0.9rem; color:#555; margin-top:0.6rem; }
+
+    /* ---------- Footer ---------- */
+    footer{ margin-top:2rem; padding:1.4rem 0; text-align:center; color:#333; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; padding: 1rem; gap:1rem; }
+      nav { display:none; }
+      .menu-btn { display:inline-block; }
+    }
+    @media (max-width:600px){
+      .card img { height:160px; }
+      .video iframe { height:150px; }
+    }
+
+  </style>
 </head>
-
 <body>
 
-
-<style>
- 
-
-body{
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(rgba(135, 206, 235, 0.5), rgba(135, 206, 235, 0.5)),
-    url(IMAGES/bg.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-.DropdownButton
- {
-background-color:darkmagenta;
-font-size: 20px;
-border: none;
-color: white;
-padding: 16;
-cursor: pointer;
-height: 50px;
-
-}
-.Dropdown-menu {
-background-color: lightgreen;
-min-width: ;width: 166px;
-position: absolute;
-display: none;
-}
-
-.Dropdown-menu a {
-    color: black;
-    padding: 10px 14px;
-    text-decoration: none;
-    display: block;
-}
-.Dropdown-menu a:hover{
-background-color: white;
-
-}
-
-
-.dropdown:hover .Dropdown-menu {
-
-    display: block;
-}
-
-
-.dropdown:hover .DropdownButton
-{
-    background-color: grey;
-}
-
-.dropdown{
-align-items: right;
-
-}
-</style>
-
-
-
-
-
-
-
-
-
-
-<table style="width: 100%;">
-<tr>
-    <td>
-<div class="dropdown" style="margin-left: 3vh;">
-    <button class="DropdownButton">MENU</button>
-<div class="Dropdown-menu">
-    <a href="#">VIDEOS</a><br>
-    <a href="#">FREESTYLES</a><br>
-    
-    
-
-
-</di>
-</div>
-
-</td>
-
-<td><hr style="width: 40vh; height: 7px; background-color: brown; border-radius: 1cm; margin-left: 6vh; margin-right: 6vh;"></td>
-
-<td><sub><h1 style="color: rgb(239, 79, 5); font-size: 50px; padding-left: 5vh; padding-top: 2cm;">WELCOME</h1></sub></td>
-
-<td><hr style="width: 40vh; height: 7px; background-color: brown; border-radius: 1cm; margin-right: 25vh;"></td>
-
-<td>
-    <img src="IMAGES/samlogo.jpg" alt="LOGO" style="width: 9vh; height: 7vh; margin-right: 3vh; border-radius: 5cm;">
-</td>
-
-</tr>
-
-
-</table>
-
-<marquee behavior="alternate" direction="left" style="width: 100%; height: 59px; background-color: rgba(5, 58, 9, 0.6); color: black;">
-    <h1 style="padding-top: 0.4px;">WELCOME TO SAMEBOI MUSIC PRESENT WEBSITE</h1></marquee>
-    <br><br>
-
-<div style="border: 1px solid; border-radius: 0.5cm; background-color: cornflowerblue; width: 45%; height: 100vh; margin-left: 49vh;">
-
-<img src="IMAGES/stay.png" alt="DE HASTY STAY OUT OF CRIME PROFILE PICTURE" style="width: 100%; height: 58vh; border-radius: 0.4cm;">
-    <h5 style="color: orangered; font-size: 30px; padding-left: 32vh;">De Hasty</h5>
-
-<p style="color: brown; padding-left: 24vh; font-size: 20px;">De Hasty - Stay Out Of Crime</p>
-
-<strong style="color: orangered; padding-left: 15vh;">JOIN DE HASTY ON AUDIOMACK @</strong>
-<a href="#" target="_blank" style="margin-left: 0.5cm; text-decoration: none;">
-    <img src="IMAGES/adm.jpeg" alt="audiomack icon" style="width: 4vh; height: 4vh;"></a>
-
-
-
-<audio controls style="margin-left: 24vh; margin-top: 3vh;">
-    
-    <source src="SONGS/De_Hasty_stay_out_of_crime(256k).mp3">
-
-</audio>
-
-</div><br><br><br>
-
-
-<div style="border: 1px solid; border-radius: 0.5cm; background-color: cornflowerblue; width: 45%; height: 100vh; margin-left: 49vh;">
-
-<img src="IMAGES/nbh.png" alt="DE HASTY STAY OUT OF CRIME PROFILE PICTURE" style="width: 100%; height: 58vh; border-radius: 0.4cm;">
-    <h5 style="color: orangered; font-size: 30px; padding-left: 32vh;">De Hasty</h5>
-
-<p style="color: brown; padding-left: 24vh; font-size: 20px;">De Hasty - NO More Broken Heart</p>
-
-<strong style="color: orangered; padding-left: 15vh;">JOIN DE HASTY ON AUDIOMACK @</strong>
-<a href="#" style="margin-left: 0.5cm; text-decoration: none;">
-    <img src="IMAGES/adm.jpeg" alt="audiomack icon" style="width: 4vh; height: 4vh;"></a>
-
-
-
-<audio controls style="margin-left: 24vh; margin-top: 3vh;">
-    
-    <source src="SONGS/De Hasty.mp3">
-
-</audio>
-
-
-</div><br><br><br>
-
-
-<div style="border: 1px solid; border-radius: 0.5cm; background-color: cornflowerblue; width: 45%; height: 100vh; margin-left: 49vh;">
-
-<img src="IMAGES/HIDF.jpg" alt="DE HASTY HOW I THE FEEL  PROFILE PICTURE" style="width: 100%; height: 58vh; border-radius: 0.4cm;">
-    <h5 style="color: orangered; font-size: 30px; padding-left: 32vh;">De Hasty</h5>
-
-<p style="color: brown; padding-left: 24vh; font-size: 20px;">De Hasty - Hoe I The Feel</p>
-
-<strong style="color: orangered; padding-left: 15vh;">JOIN DE HASTY ON AUDIOMACK @</strong>
-<a href="#" style="margin-left: 0.5cm; text-decoration: none;">
-    <img src="IMAGES/adm.jpeg" alt="audiomack icon" style="width: 4vh; height: 4vh;"></a>
-
-
-
-<audio controls style="margin-left: 24vh; margin-top: 3vh;">
-    
-    <source src="SONGS/De  Hasty_how i dey feel_(Prod by karis)-1.mp3">
-
-</audio>
-
-
-</div><br><br><br>
-
-
-
-
-<div style="border: 1px solid; border-radius: 0.5cm; background-color: cornflowerblue; width: 45%; height: 100vh; margin-left: 49vh;">
-
-<img src="IMAGES/BHG.jpg" alt="DE HASTY FEAT BIGGEST SEDEM BHAD GEAL PROFILE PICTURE" style="width: 100%; height: 58vh; border-radius: 0.4cm;">
-    <h5 style="color: orangered; font-size: 30px; padding-left: 32vh;">De Hasty</h5>
-
-<p style="color: brown; padding-left: 24vh; font-size: 20px;">De Hasty - Feat Biggest Sedem Bhad Geal</p>
-
-<strong style="color: orangered; padding-left: 15vh;">JOIN DE HASTY ON AUDIOMACK @</strong>
-<a href="#" style="margin-left: 0.5cm; text-decoration: none;">
-    <img src="IMAGES/adm.jpeg" alt="audiomack icon" style="width: 4vh; height: 4vh;"></a>
-
-
-
-<audio controls style="margin-left: 24vh; margin-top: 3vh;">
-    
-    <source src="SONGS/De hasty Feat. Biggest Sedem_Bhad Geal_(Prod By karis).mp3">
-
-</audio>
-
-
-</div><br><br><br>
-
-
-
-
-<div style="border: 1px solid; border-radius: 0.5cm; background-color: cornflowerblue; width: 45%; height: 100vh; margin-left: 49vh;">
-
-<img src="IMAGES/GHA.jpg" alt="DE HASTY GHANA PROFILE PICTURE" style="width: 100%; height: 58vh; border-radius: 0.4cm;">
-    <h5 style="color: orangered; font-size: 30px; padding-left: 32vh;">De Hasty</h5>
-
-<p style="color: brown; padding-left: 24vh; font-size: 20px;">De Hasty - Ghana</p>
-
-<strong style="color: orangered; padding-left: 15vh;">JOIN DE HASTY ON AUDIOMACK @</strong>
-<a href="#" style="margin-left: 0.5cm; text-decoration: none;">
-    <img src="IMAGES/adm.jpeg" alt="audiomack icon" style="width: 4vh; height: 4vh;"></a>
-
-
-
-<audio controls style="margin-left: 24vh; margin-top: 3vh;">
-    
-    <source src="SONGS/De Hasty Ghana MP3.mp3">
-
-</audio>
-
-
-</div><br><br><br>
-
-
-
-<div style="border: 1px solid; border-radius: 0.5cm; background-color: cornflowerblue; width: 45%; height: 100vh; margin-left: 49vh;">
-
-<img src="IMAGES/FAKE.jpg" alt="DE HASTY FAKE LIFE PROFILE PICTURE" style="width: 100%; height: 58vh; border-radius: 0.4cm;">
-    <h5 style="color: orangered; font-size: 30px; padding-left: 32vh;">De Hasty</h5>
-
-<p style="color: brown; padding-left: 24vh; font-size: 20px;">De Hasty - Fake Life</p>
-
-<strong style="color: orangered; padding-left: 15vh;">JOIN DE HASTY ON AUDIOMACK @</strong>
-<a href="#" style="margin-left: 0.5cm; text-decoration: none;">
-    <img src="IMAGES/adm.jpeg" alt="audiomack icon" style="width: 4vh; height: 4vh;"></a>
-
-
-
-<audio controls style="margin-left: 24vh; margin-top: 3vh;">
-    
-    <source src="SONGS/De-Hasty x Fake Life x Mixed by INFINYTE Recordz.mp3">
-
-</audio>
-
-
-</div><br><br><br>
-
-
-
-<div style="border: 1px solid; border-radius: 0.5cm; background-color: cornflowerblue; width: 45%; height: 100vh; margin-left: 49vh;">
-
-<img src="IMAGES/NEW.jpg" alt="DE HASTY NEW YEAR PROFILE PICTURE" style="width: 100%; height: 58vh; border-radius: 0.4cm;">
-    <h5 style="color: orangered; font-size: 30px; padding-left: 32vh;">De Hasty</h5>
-
-<p style="color: brown; padding-left: 24vh; font-size: 20px;">De Hasty - New Year</p>
-
-<strong style="color: orangered; padding-left: 15vh;">JOIN DE HASTY ON AUDIOMACK @</strong>
-<a href="#" style="margin-left: 0.5cm; text-decoration: none;">
-    <img src="IMAGES/adm.jpeg" alt="audiomack icon" style="width: 4vh; height: 4vh;"></a>
-
-
-
-<audio controls style="margin-left: 24vh; margin-top: 3vh;">
-    
-    <source src="SONGS/De Hasty new year.mp3">
-
-</audio>
-
-
-</div><br><br><br>
-
-<div style="border: 1px solid; border-radius: 0.5cm; background-color: cornflowerblue; width: 45%; height: 100vh; margin-left: 49vh;">
-
-<img src="IMAGES/LEARN.jpg" alt="DE HASTY LEARN HOW FI DO GOOD PROFILE PICTURE" style="width: 100%; height: 58vh; border-radius: 0.4cm;">
-    <h5 style="color: orangered; font-size: 30px; padding-left: 32vh;">De Hasty</h5>
-
-<p style="color: brown; padding-left: 24vh; font-size: 20px;">De Hasty - Learn How Fi Do Good</p>
-
-<strong style="color: orangered; padding-left: 15vh;">JOIN DE HASTY ON AUDIOMACK @</strong>
-<a href="#" style="margin-left: 0.5cm; text-decoration: none;">
-    <img src="IMAGES/adm.jpeg" alt="audiomack icon" style="width: 4vh; height: 4vh;"></a>
-
-
-
-<audio controls style="margin-left: 24vh; margin-top: 3vh;">
-    
-    <source src="SONGS/De Hasty learn how fi do good.mp3">
-
-</audio>
-
-</div><br><br><br>
-
-<div style="border: 1px solid; border-radius: 0.5cm; background-color: cornflowerblue; width: 45%; height: 100vh; margin-left: 49vh;">
-
-<img src="IMAGES/L4M.jpg" alt="DE HASTY LOVE FOR MONEY PROFILE PICTURE" style="width: 100%; height: 58vh; border-radius: 0.4cm;">
-    <h5 style="color: orangered; font-size: 30px; padding-left: 32vh;">De Hasty</h5>
-
-<p style="color: brown; padding-left: 24vh; font-size: 20px;">De Hasty - Love For Money</p>
-
-<strong style="color: orangered; padding-left: 15vh;">JOIN DE HASTY ON AUDIOMACK @</strong>
-<a href="#" style="margin-left: 0.5cm; text-decoration: none;">
-    <img src="IMAGES/adm.jpeg" alt="audiomack icon" style="width: 4vh; height: 4vh;"></a>
-
-
-
-<audio controls style="margin-left: 24vh; margin-top: 3vh;">
-    
-    <source src="SONGS/De Hasty - Love 4 Money - prod by Gachios.mp3">
-
-</audio>
-
-</div><br><br><br>
-
-<div style="border: 1px solid; border-radius: 0.5cm; background-color: cornflowerblue; width: 45%; height: 100vh; margin-left: 49vh;">
-
-<img src="IMAGES/HBD.jpg" alt="DE HASTY BIRTHDAY SONG PROFILE PICTURE" style="width: 100%; height: 58vh; border-radius: 0.4cm;">
-    <h5 style="color: orangered; font-size: 30px; padding-left: 32vh;">De Hasty</h5>
-
-<p style="color: brown; padding-left: 24vh; font-size: 20px;">De Hasty - Birthday</p>
-
-<strong style="color: orangered; padding-left: 15vh;">JOIN DE HASTY ON AUDIOMACK @</strong>
-<a href="#" style="margin-left: 0.5cm; text-decoration: none;">
-    <img src="IMAGES/adm.jpeg" alt="audiomack icon" style="width: 4vh; height: 4vh;"></a>
-
-
-
-<audio controls style="margin-left: 24vh; margin-top: 3vh;">
-    
-    <source src="SONGS/De Hasty_Birthday_Prod.by JB.mp3">
-
-</audio>
-
-</div><br><br><br>
-
-</div><br><br><br>
-
-<div style="border: 1px solid; border-radius: 0.5cm; background-color: cornflowerblue; width: 45%; height: 100vh; margin-left: 49vh;">
-
-<img src="IMAGES/SOKOTO.jpg" alt="DE HASTY SOKOTO PROFILE PICTURE" style="width: 100%; height: 58vh; border-radius: 0.4cm;">
-    <h5 style="color: orangered; font-size: 30px; padding-left: 32vh;">De Hasty</h5>
-
-<p style="color: brown; padding-left: 24vh; font-size: 20px;">De Hasty - Sokoto</p>
-
-<strong style="color: orangered; padding-left: 15vh;">JOIN DE HASTY ON AUDIOMACK @</strong>
-<a href="#" style="margin-left: 0.5cm; text-decoration: none;">
-    <img src="IMAGES/adm.jpeg" alt="audiomack icon" style="width: 4vh; height: 4vh;"></a>
-
-
-
-<audio controls style="margin-left: 24vh; margin-top: 3vh;">
-    
-    <source src="SONGS/De Hasty_Sokoto_Prod.by JB.mp3">
-
-</audio>
-
-</div><br><br><br>
-
-
-<script>
-  const audios = document.querySelectorAll('audio');
-  audios.forEach(audio => {
-    audio.addEventListener('play', () => {
-      audios.forEach(other => {
-        if (other !== audio) other.pause();
+  <!-- Header -->
+  <header>
+    <div class="nav-inner">
+      <a class="logo" href="#home">
+        <img src="IMAGES/samlogo.jpg" alt="De Hasty logo">
+        <span class="brand">De Hasty</span>
+      </a>
+
+      <nav>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#music">Music</a>
+        <a class="nav-link" href="#videos">Videos</a>
+        <a class="nav-link" href="#socials">Socials</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+
+      <button class="menu-btn" aria-expanded="false" aria-controls="mobileMenu">MENU</button>
+    </div>
+  </header>
+
+  <main class="container" id="home">
+
+    <!-- Hero -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-left">
+        <h1>Welcome to De Hasty's Official Page</h1>
+        <p>From the ends to the world — grime-influenced flow with real stories. Explore the music, watch videos, and get in touch for bookings.</p>
+        <div class="hero-meta">
+          <a class="audiomack" href="#" target="_blank" rel="noopener">
+            <img src="IMAGES/adm.jpeg" alt="Audiomack">
+            <span>Listen on Audiomack</span>
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-hidden="false">
+        <img src="IMAGES/stay.png" alt="Stay Out Of Crime cover art">
+        <div style="width:100%; text-align:center;">
+          <strong style="color:var(--accent); font-size:1rem;">Featured</strong>
+          <p style="color:#222; font-weight:700;">De Hasty — Stay Out Of Crime</p>
+          <audio controls>
+            <source src="SONGS/De_Hasty_stay_out_of_crime(256k).mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Banner -->
+    <div class="banner" role="status" aria-live="polite">
+      <p>WELCOME TO DE HASTY MUSIC WEBSITE — NEW TRACKS & FREESTYLES</p>
+    </div>
+
+    <!-- About -->
+    <section id="about">
+      <h2>About</h2>
+      <div style="display:grid; grid-template-columns:1fr 320px; gap:1rem; align-items:center;">
+        <div>
+          <p style="font-size:1rem; color:#111;">
+            De Hasty brings raw storytelling and rhythmic grit to each track. Rooted in real experiences and sharp lyricism, his sound blends streetwise authenticity with melodic hooks. Based in the UK, De Hasty continues to drop singles and freestyles that resonate on and offline.
+          </p>
+          <p style="margin-top:0.6rem;" class="muted-note">
+            Want to add more bio details, credits, or press quotes? Replace this paragraph with your official bio.
+          </p>
+        </div>
+        <div>
+          <img src="IMAGES/samlogo.jpg" alt="De Hasty portrait" style="width:100%; border-radius:10px; object-fit:cover;">
+        </div>
+      </div>
+    </section>
+
+    <!-- Music -->
+    <section id="music">
+      <h2>Music</h2>
+      <div class="music-grid">
+
+        <!-- Card 1 -->
+        <article class="card">
+          <img src="IMAGES/stay.png" alt="Stay Out Of Crime cover">
+          <h3>De Hasty — Stay Out Of Crime</h3>
+          <p>Single</p>
+          <div class="meta-row">
+            <a class="audiomack" href="#" target="_blank" rel="noopener">
+              <img src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack
+            </a>
+            <span style="font-size:0.9rem;color:#444;">Prod: —</span>
+          </div>
+          <audio controls>
+            <source src="SONGS/De_Hasty_stay_out_of_crime(256k).mp3" type="audio/mpeg">
+          </audio>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card">
+          <img src="IMAGES/nbh.png" alt="No More Broken Heart cover">
+          <h3>De Hasty — No More Broken Heart</h3>
+          <p>Single</p>
+          <div class="meta-row">
+            <a class="audiomack" href="#" target="_blank" rel="noopener">
+              <img src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack
+            </a>
+          </div>
+          <audio controls>
+            <source src="SONGS/De_Hasty_No_More_Broken_Heart.mp3" type="audio/mpeg">
+          </audio>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card">
+          <img src="IMAGES/HIDF.jpg" alt="How I Dey Feel cover">
+          <h3>De Hasty — How I Dey Feel</h3>
+          <p>Single</p>
+          <div class="meta-row">
+            <a class="audiomack" href="#" target="_blank" rel="noopener">
+              <img src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack
+            </a>
+          </div>
+          <audio controls>
+            <source src="SONGS/De_Hasty_how_i_dey_feel.mp3" type="audio/mpeg">
+          </audio>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="card">
+          <img src="IMAGES/BHG.jpg" alt="Feat Biggest Sedem - Bhad Geal cover">
+          <h3>De Hasty ft Biggest Sedem — Bhad Geal</h3>
+          <p>Feat. Biggest Sedem</p>
+          <div class="meta-row">
+            <a class="audiomack" href="#" target="_blank" rel="noopener">
+              <img src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack
+            </a>
+          </div>
+          <audio controls>
+            <source src="SONGS/De_Hasty_Feat_Biggest_Sedem_Bhad_Geal.mp3" type="audio/mpeg">
+          </audio>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="card">
+          <img src="IMAGES/GHA.jpg" alt="Ghana cover">
+          <h3>De Hasty — Ghana</h3>
+          <p>Single</p>
+          <div class="meta-row">
+            <a class="audiomack" href="#" target="_blank" rel="noopener">
+              <img src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack
+            </a>
+          </div>
+          <audio controls>
+            <source src="SONGS/De_Hasty_Ghana.mp3" type="audio/mpeg">
+          </audio>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="card">
+          <img src="IMAGES/FAKE.jpg" alt="Fake Life cover">
+          <h3>De Hasty — Fake Life</h3>
+          <p>Single</p>
+          <div class="meta-row">
+            <a class="audiomack" href="#" target="_blank" rel="noopener">
+              <img src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack
+            </a>
+          </div>
+          <audio controls>
+            <source src="SONGS/De_Hasty_Fake_Life.mp3" type="audio/mpeg">
+          </audio>
+        </article>
+
+        <!-- Card 7 -->
+        <article class="card">
+          <img src="IMAGES/NEW.jpg" alt="New Year cover">
+          <h3>De Hasty — New Year</h3>
+          <p>Single</p>
+          <div class="meta-row">
+            <a class="audiomack" href="#" target="_blank" rel="noopener">
+              <img src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack
+            </a>
+          </div>
+          <audio controls>
+            <source src="SONGS/De_Hasty_New_Year.mp3" type="audio/mpeg">
+          </audio>
+        </article>
+
+        <!-- Card 8 -->
+        <article class="card">
+          <img src="IMAGES/LEARN.jpg" alt="Learn How Fi Do Good cover">
+          <h3>De Hasty — Learn How Fi Do Good</h3>
+          <p>Single</p>
+          <div class="meta-row">
+            <a class="audiomack" href="#" target="_blank" rel="noopener">
+              <img src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack
+            </a>
+          </div>
+          <audio controls>
+            <source src="SONGS/De_Hasty_Learn_How_Fi_Do_Good.mp3" type="audio/mpeg">
+          </audio>
+        </article>
+
+        <!-- Card 9 -->
+        <article class="card">
+          <img src="IMAGES/L4M.jpg" alt="Love For Money cover">
+          <h3>De Hasty — Love For Money</h3>
+          <p>Single</p>
+          <div class="meta-row">
+            <a class="audiomack" href="#" target="_blank" rel="noopener">
+              <img src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack
+            </a>
+          </div>
+          <audio controls>
+            <source src="SONGS/De_Hasty_Love_For_Money.mp3" type="audio/mpeg">
+          </audio>
+        </article>
+
+        <!-- Card 10 -->
+        <article class="card">
+          <img src="IMAGES/HBD.jpg" alt="Birthday cover">
+          <h3>De Hasty — Birthday</h3>
+          <p>Single</p>
+          <div class="meta-row">
+            <a class="audiomack" href="#" target="_blank" rel="noopener">
+              <img src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack
+            </a>
+          </div>
+          <audio controls>
+            <source src="SONGS/De_Hasty_Birthday.mp3" type="audio/mpeg">
+          </audio>
+        </article>
+
+        <!-- Card 11 -->
+        <article class="card">
+          <img src="IMAGES/SOKOTO.jpg" alt="Sokoto cover">
+          <h3>De Hasty — Sokoto</h3>
+          <p>Single</p>
+          <div class="meta-row">
+            <a class="audiomack" href="#" target="_blank" rel="noopener">
+              <img src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack
+            </a>
+          </div>
+          <audio controls>
+            <source src="SONGS/De_Hasty_Sokoto.mp3" type="audio/mpeg">
+          </audio>
+        </article>
+
+      </div> <!-- /.music-grid -->
+    </section>
+
+    <!-- Videos -->
+    <section id="videos">
+      <h2>Videos</h2>
+      <div class="video-grid">
+        <!-- Replace the example YouTube IDs with your real video IDs -->
+        <div class="video">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="Video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Video 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Socials -->
+    <section id="socials">
+      <h2>Socials</h2>
+      <div class="socials">
+        <!-- Replace # with the real profile URLs -->
+        <a class="social-btn" href="#" target="_blank" rel="noopener noreferrer">
+          <!-- TikTok icon (simple) -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M9 3v12a3.5 3.5 0 1 0 3.5-3.5V6.5h3.5V3H9z" fill="#fff"/></svg>
+          TikTok
+        </a>
+
+        <a class="social-btn" href="#" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 2.04c-5.52 0-9.96 4.44-9.96 9.96 0 4.4 2.86 8.12 6.82 9.43.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.52 1.03 1.52 1.03.9 1.54 2.36 1.1 2.94.84.09-.66.35-1.1.63-1.35-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.67-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.58 9.58 0 0 1 12 6.8c.85.004 1.71.11 2.51.32 1.9-1.29 2.74-1.02 2.74-1.02.56 1.38.21 2.4.1 2.65.64.69 1.03 1.58 1.03 2.67 0 3.85-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.33-.01 2.41-.01 2.74 0 .27.18.59.69.49A9.97 9.97 0 0 0 21.96 12 9.96 9.96 0 0 0 12 2.04z" fill="#fff"/></svg>
+          GitHub
+        </a>
+
+        <a class="social-btn" href="#" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a class="social-btn" href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a class="social-btn" href="#" target="_blank" rel="noopener noreferrer">Audiomack</a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact / Booking</h2>
+      <div style="display:grid; grid-template-columns: 1fr 360px; gap:1rem;">
+        <form class="contact" action="mailto:youremail@example.com" method="post" enctype="text/plain">
+          <div style="display:flex; gap:0.6rem; margin-bottom:0.6rem;">
+            <input type="text" name="Name" placeholder="Your name" required>
+            <input type="email" name="Email" placeholder="Your email" required>
+          </div>
+          <div style="margin-bottom:0.6rem;">
+            <input type="text" name="Subject" placeholder="Subject" required>
+          </div>
+          <div style="margin-bottom:0.6rem;">
+            <textarea name="Message" rows="5" placeholder="Message / Booking details" required style="width:100%;"></textarea>
+          </div>
+          <div style="display:flex; gap:0.6rem; align-items:center;">
+            <button class="btn-primary" type="submit">Send</button>
+            <span class="muted-note">Or email: <strong>youremail@example.com</strong></span>
+          </div>
+        </form>
+
+        <div style="background:linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,255,255,0.9)); padding:1rem; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.06);">
+          <h3 style="color:var(--accent); margin-bottom:0.6rem;">Tour / Bookings</h3>
+          <p style="margin-bottom:0.6rem;">For bookings and press please use the form or email the team directly. Include dates, city, and rider/fee info for fastest response.</p>
+
+          <h4 style="margin-top:0.8rem;">Press Kit</h4>
+          <p style="margin-bottom:0.6rem;">Download an electronic press kit (EPK) — <a href="#" style="color:darkmagenta;font-weight:700;">EPK (placeholder)</a></p>
+
+          <div style="margin-top:0.8rem;">
+            <strong>Manager:</strong><br>
+            <span>Manager Name</span><br>
+            <span>Manager Phone</span><br>
+            <span>Manager Email</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© <strong>De Hasty</strong> — All rights reserved.</p>
+    </footer>
+
+  </main>
+
+  <!-- JS: small scripts for mobile menu + single audio play behaviour -->
+  <script>
+    // Mobile menu toggle (simple)
+    const menuBtn = document.querySelector('.menu-btn');
+    const nav = document.querySelector('nav');
+
+    menuBtn?.addEventListener('click', () => {
+      const isOpen = nav.style.display === 'flex';
+      nav.style.display = isOpen ? 'none' : 'flex';
+      menuBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // Ensure only one audio plays at a time
+    document.addEventListener('play', function(e){
+      const audios = document.querySelectorAll('audio');
+      audios.forEach(a => { if (a !== e.target) a.pause(); });
+    }, true);
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const href = a.getAttribute('href');
+        if(href.length > 1){
+          e.preventDefault();
+          document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block:'start' });
+        }
       });
     });
-  });
-</script>
 
-
+    // Accessibility: allow keyboard toggle for the menu button
+    menuBtn?.addEventListener('keyup', (e)=>{ if(e.key === 'Enter') menuBtn.click(); });
+  </script>
 </body>
 </html>
