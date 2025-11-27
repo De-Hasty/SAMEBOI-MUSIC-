@@ -1,0 +1,151 @@
+/* ---------- Reset ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Variables ---------- */
+:root {
+    --accent: orangered;
+    --primary: cornflowerblue;
+    --bg-overlay: rgba(135, 206, 235, 0.45);
+    --muted: #333;
+    --glass: rgba(255, 255, 255, 0.85);
+    --card-radius: 12px;
+    --max-width: 1100px;
+}
+
+/* ---------- Body ---------- */
+body {
+    background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url("IMAGES/bg.jpg") center/cover fixed no-repeat;
+    color: var(--muted);
+    line-height: 1.45;
+    padding-bottom: 4rem;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* ---------- Header ---------- */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    backdrop-filter: blur(6px);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.7));
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 1rem;
+}
+
+.logo {
+    display: flex;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.brand {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+nav {
+    margin-left: auto;
+    display: flex;
+    gap: 0.6rem;
+}
+
+.nav-link {
+    padding: 0.5rem 0.8rem;
+    text-decoration: none;
+    color: var(--muted);
+}
+
+.nav-link:hover {
+    background: rgba(0, 0, 0, 0.06);
+    color: #111;
+}
+
+.menu-btn {
+    display: none;
+    background: darkmagenta;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 1.2rem;
+    padding: 2rem 0;
+}
+
+.hero-left h1 {
+    font-size: 2.25rem;
+    color: var(--accent);
+}
+
+.hero-card {
+    background: var(--glass);
+    padding: 1rem;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+/* ---------- Banner ---------- */
+.banner {
+    margin: 0.5rem 0;
+    background: rgba(5, 58, 9, 0.72);
+    padding: 0.6rem;
+    color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.banner p {
+    white-space: nowrap;
+    animation: marquee 12s linear infinite;
+    font-weight: 700;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* ---------- Music Cards ---------- */
+/* (Your full CSS continues — unchanged from original) */
