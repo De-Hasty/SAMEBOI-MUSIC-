@@ -596,7 +596,11 @@ please i w
             <p>© <strong>De Hasty</strong> — All rights reserved.</p>
         </footer>
     </main> <!-- JS: small scripts for mobile menu + single audio play behaviour -->
-    <script> // Mobile menu toggle (simple) const menuBtn = document.querySelector('.menu-btn'); const nav = document.querySelector('nav'); menuBtn?.addEventListener('click', () => { const isOpen = nav.style.display === 'flex'; nav.style.display = isOpen ? 'none' : 'flex'; menuBtn.setAttribute('aria-expanded', String(!isOpen)); }); // Ensure only one audio plays at a time document.addEventListener('play', function(e){ const audios = document.querySelectorAll('audio'); audios.forEach(a => { if (a !== e.target) a.pause(); }); }, true); // Smooth scroll for internal links document.querySelectorAll('a[href^="#"]').forEach(a=>{ a.addEventListener('click', (e)=>{ const href = a.getAttribute('href'); if(href.length > 1){ e.preventDefault(); document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block:'start' }); } }); }); // Accessibility: allow keyboard toggle for the menu button menuBtn?.addEventListener('keyup', (e)=>{ if(e.key === 'Enter') menuBtn.click(); }); </script>
+
+
+    <script src="homescript.js"></script>
+
+
 </body>
 
 </html>
