@@ -395,6 +395,10 @@ please i w
                 height: 150px;
             }
         }
+
+        .section {
+            display: none;
+        }
     </style>
 </head>
 
@@ -402,10 +406,14 @@ please i w
     <header>
         <div class="nav-inner"> <a class="logo" href="#home"> <img src="IMAGES/samlogo.jpg" alt="De Hasty logo"> <span
                     class="brand">De Hasty</span> </a>
-            <nav> <a class="nav-link" href="#about">About</a> <a class="nav-link" href="#music">Music</a> <a
-                    class="nav-link" href="#videos" onclick="videos">Videos</a> <a class="nav-link"
-                    href="#socials">Socials</a> <a class="nav-link" href="#contact">Contact</a> </nav> <button
-                class="menu-btn" aria-expanded="false" aria-controls="mobileMenu">MENU</button>
+            <nav>
+                <a class="nav-link" href="#home" onclick="showSection('home')">Home</a>
+                <a class="nav-link" href="#about" onclick="showSection('about')">About</a>
+                <a class="nav-link" href="#videos" onclick="showSection('videos')">Videos</a>
+                <a class="nav-link" href="#music" onclick="showSection('music')">Music</a>
+                <a class="nav-link" href="#socials" onclick="showSection('socials')">Socials</a>
+                <a class="nav-link" href="#contact" onclick="showSection('contact')">Contact</a>
+            </nav>
         </div>
     </header>
     <main class="container" id="home"> <!-- Hero -->

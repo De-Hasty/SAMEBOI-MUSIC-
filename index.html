@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Splash Screen</title>
+    <meta name="google-site-verification" content="G1XgYwlPVdwcB_Foy5aIrRCTNTQrhfoLgWeBTe-xQaI" />
+
+
+    <title>DE HASTY WELCOME PAGE</title>
 
     <style>
         * {
@@ -12,7 +16,8 @@
             box-sizing: border-box;
         }
 
-        body, html {
+        body,
+        html {
             height: 100%;
             overflow: hidden;
             font-family: Arial, sans-serif;
@@ -30,7 +35,8 @@
             text-align: center;
             z-index: 2;
             animation: fadeOut 1s ease-out forwards;
-            animation-delay: 9s; /* fades out after ~9s */
+            animation-delay: 9s;
+            /* fades out after ~9s */
         }
 
         /* 🔥 Background Image + 3-Color Gradient + Blur + Zoom */
@@ -38,12 +44,10 @@
             position: fixed;
             inset: 0;
             background:
-                linear-gradient(
-                    135deg,
+                linear-gradient(135deg,
                     rgba(25, 192, 127, 0.4),
                     rgba(127, 192, 25, 0.2),
-                    rgba(0173, 025, 192, 0.4)
-                ),
+                    rgba(0173, 025, 192, 0.4)),
                 url('IMAGES/splash.jpg');
             background-size: cover;
             background-position: center;
@@ -55,7 +59,7 @@
 
         /* ✨ Glow text effect */
         #splash h1 {
-            text-shadow: 
+            text-shadow:
                 0 0 10px rgba(255, 255, 255, 0.9),
                 0 0 20px rgba(255, 255, 255, 0.7),
                 0 0 40px rgba(255, 255, 255, 0.5);
@@ -66,8 +70,13 @@
 
         /* Background Zoom */
         @keyframes zoomIn {
-            0%   { transform: scale(1); }
-            100% { transform: scale(1.15); }
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.15);
+            }
         }
 
         /* Glow pulsing text */
@@ -78,6 +87,7 @@
                     0 0 12px rgb(83, 176, 181),
                     0 0 24px rgb(83, 176, 181);
             }
+
             100% {
                 text-shadow:
                     0 0 20px white,
@@ -88,7 +98,9 @@
 
         /* Splash fade-out */
         @keyframes fadeOut {
-            to { opacity: 0; }
+            to {
+                opacity: 0;
+            }
         }
     </style>
 </head>
@@ -111,4 +123,5 @@
     </script>
 
 </body>
+
 </html>
