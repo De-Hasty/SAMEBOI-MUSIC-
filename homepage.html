@@ -201,6 +201,7 @@ please i w
         /* ---------- Sections ---------- */
         section {
             padding: 1.6rem 0;
+
         }
 
         section h2 {
@@ -298,7 +299,7 @@ please i w
         .video iframe {
             width: 100%;
             height: 180px;
-            display: block;
+
             border: 0;
         }
 
@@ -395,10 +396,6 @@ please i w
                 height: 150px;
             }
         }
-
-        .section {
-            display: none;
-        }
     </style>
 </head>
 
@@ -407,15 +404,19 @@ please i w
         <div class="nav-inner"> <a class="logo" href="#home"> <img src="IMAGES/samlogo.jpg" alt="De Hasty logo"> <span
                     class="brand">De Hasty</span> </a>
             <nav>
-                <a class="nav-link" href="#home" onclick="showSection('home')">Home</a>
                 <a class="nav-link" href="#about" onclick="showSection('about')">About</a>
-                <a class="nav-link" href="#videos" onclick="showSection('videos')">Videos</a>
                 <a class="nav-link" href="#music" onclick="showSection('music')">Music</a>
+                <a class="nav-link" href="#videos" onclick="showSection('videos')">Videos</a>
                 <a class="nav-link" href="#socials" onclick="showSection('socials')">Socials</a>
                 <a class="nav-link" href="#contact" onclick="showSection('contact')">Contact</a>
             </nav>
+
+
+
+            <button class="menu-btn" aria-expanded="false" aria-controls="mobileMenu">MENU</button>
         </div>
     </header>
+
     <main class="container" id="home"> <!-- Hero -->
         <section class="hero" aria-label="Hero">
             <div class="hero-left">
@@ -452,100 +453,17 @@ please i w
                         style="width:100%; border-radius:10px; object-fit:cover;"> </div>
             </div>
         </section> <!-- Music -->
+        <!-- Videos -->
+
         <section id="music">
             <h2>Music</h2>
-            <div class="music-grid"> <!-- Card 1 -->
-                <article class="card"> <img src="IMAGES/stay.png" alt="Stay Out Of Crime cover">
-                    <h3>De Hasty — Stay Out Of Crime</h3>
-                    <p>Single</p>
-                    <div class="meta-row"> <a class="audiomack" href="#" target="_blank" rel="noopener"> <img
-                                src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack </a> <span
-                            style="font-size:0.9rem;color:#444;">Prod: —</span> </div> <audio controls>
-                        <source src="SONGS/De_Hasty_stay_out_of_crime(256k).mp3" type="audio/mpeg">
-                    </audio>
-                </article> <!-- Card 2 -->
-                <article class="card"> <img src="IMAGES/nbh.png" alt="No More Broken Heart cover">
-                    <h3>De Hasty — No More Broken Heart</h3>
-                    <p>Single</p>
-                    <div class="meta-row"> <a class="audiomack" href="#" target="_blank" rel="noopener"> <img
-                                src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack </a> </div> <audio controls>
-                        <source src="SONGS/De Hasty.mp3">
-                    </audio>
-                </article> <!-- Card 3 -->
-                <article class="card"> <img src="IMAGES/HIDF.jpg" alt="How I Dey Feel cover">
-                    <h3>De Hasty — How I Dey Feel</h3>
-                    <p>Single</p>
-                    <div class="meta-row"> <a class="audiomack" href="#" target="_blank" rel="noopener"> <img
-                                src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack </a> </div> <audio controls>
-                        <source src="SONGS/De Hasty_how i dey feel_(Prod by karis)-1.mp3">
-                    </audio>
-                </article> <!-- Card 4 -->
-                <article class="card"> <img src="IMAGES/BHG.jpg" alt="Feat Biggest Sedem - Bhad Geal cover">
-                    <h3>De Hasty ft Biggest Sedem — Bhad Geal</h3>
-                    <p>Feat. Biggest Sedem</p>
-                    <div class="meta-row"> <a class="audiomack" href="#" target="_blank" rel="noopener"> <img
-                                src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack </a> </div> <audio controls>
-                        <source src="SONGS/De hasty Feat. Biggest Sedem_Bhad Geal_(Prod By karis).mp3">
-                    </audio>
-                </article> <!-- Card 5 -->
-                <article class="card"> <img src="IMAGES/GHA.jpg" alt="Ghana cover">
-                    <h3>De Hasty — Ghana</h3>
-                    <p>Single</p>
-                    <div class="meta-row"> <a class="audiomack" href="#" target="_blank" rel="noopener"> <img
-                                src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack </a> </div> <audio controls>
-                        <source src="SONGS/De Hasty Ghana MP3.mp3" type="audio/mpeg">
-                    </audio>
-                </article> <!-- Card 6 -->
-                <article class="card"> <img src="IMAGES/FAKE.jpg" alt="Fake Life cover">
-                    <h3>De Hasty — Fake Life</h3>
-                    <p>Single</p>
-                    <div class="meta-row"> <a class="audiomack" href="#" target="_blank" rel="noopener"> <img
-                                src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack </a> </div> <audio controls>
-                        <source src="SONGS/De-Hasty x Fake Life x Mixed by INFINYTE Recordz.mp3">
-                    </audio>
-                </article> <!-- Card 7 -->
-                <article class="card"> <img src="IMAGES/NEW.jpg" alt="New Year cover">
-                    <h3>De Hasty — New Year</h3>
-                    <p>Single</p>
-                    <div class="meta-row"> <a class="audiomack" href="#" target="_blank" rel="noopener"> <img
-                                src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack </a> </div> <audio controls>
-                        <source src="SONGS/De Hasty new year.mp3.mp3">
-                    </audio>
-                </article> <!-- Card 8 -->
-                <article class="card"> <img src="IMAGES/LEARN.jpg" alt="Learn How Fi Do Good cover">
-                    <h3>De Hasty — Learn How Fi Do Good</h3>
-                    <p>Single</p>
-                    <div class="meta-row"> <a class="audiomack" href="#" target="_blank" rel="noopener"> <img
-                                src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack </a> </div> <audio controls>
-                        <source src="SONGS/De Hasty learn how fi do good.mp3">
-                    </audio>
-                </article> <!-- Card 9 -->
-                <article class="card"> <img src="IMAGES/L4M.jpg" alt="Love For Money cover">
-                    <h3>De Hasty — Love For Money</h3>
-                    <p>Single</p>
-                    <div class="meta-row"> <a class="audiomack" href="#" target="_blank" rel="noopener"> <img
-                                src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack </a> </div> <audio controls>
-                        <source src="SONGS/De Hasty - Love 4 Money - prod by Gachios.mp3">
-                    </audio>
-                </article> <!-- Card 10 -->
-                <article class="card"> <img src="IMAGES/HBD.jpg" alt="Birthday cover">
-                    <h3>De Hasty — Birthday</h3>
-                    <p>Single</p>
-                    <div class="meta-row"> <a class="audiomack" href="#" target="_blank" rel="noopener"> <img
-                                src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack </a> </div> <audio controls>
-                        <source src="SONGS/De Hasty_Birthday_Prod.by JB.mp3">
-                    </audio>
-                </article> <!-- Card 11 -->
-                <article class="card"> <img src="IMAGES/SOKOTO.jpg" alt="Sokoto cover">
-                    <h3>De Hasty — Sokoto</h3>
-                    <p>Single</p>
-                    <div class="meta-row"> <a class="audiomack" href="#" target="_blank" rel="noopener"> <img
-                                src="IMAGES/adm.jpeg" alt="Audiomack icon">Audiomack </a> </div> <audio controls>
-                        <source src="SONGS/De Hasty_Sokoto_Prod.by JB.mp3">
-                    </audio>
-                </article>
-            </div> <!-- /.music-grid -->
-        </section> <!-- Videos -->
+            <div class="music-grid">
+                <iframe src="https://audiomack.com/sameboi-music/playlist/sameboi-music?share-user-id=11004583"
+                    scrolling="no" width="100%" height="420" frameborder="0">
+                </iframe>
+            </div>
+        </section>
+
         <section id="videos">
             <h2>Videos</h2>
             <div id="youtube-gallery" style="display:flex;flex-wrap:wrap;gap:20px;"></div>
