@@ -4,106 +4,106 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-site-verification" content="G1XgYwlPVdwcB_Foy5aIrRCTNTQrhfoLgWeBTe-xQaI" />
-
+    <meta name="google-site-verification" content="XGimkhwuwrTqkhIXYmORqTn3Rwu1MkpzgL9sbtkkkvs" />
 
     <title>DE HASTY WELCOME PAGE</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body,
-        html {
-            height: 100%;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
-        }
-
-        /* 🔥 SPLASH CONTAINER */
-        #splash {
-            position: fixed;
-            inset: 0;
-            color: orangered;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2.5rem;
-            text-align: center;
-            z-index: 2;
-            animation: fadeOut 1s ease-out forwards;
-            animation-delay: 9s;
-            /* fades out after ~9s */
-        }
-
-        /* 🔥 Background Image + 3-Color Gradient + Blur + Zoom */
-        #bg {
-            position: fixed;
-            inset: 0;
-            background:
-                linear-gradient(135deg,
-                    rgba(25, 192, 127, 0.4),
-                    rgba(127, 192, 25, 0.2),
-                    rgba(0173, 025, 192, 0.4)),
-                url('IMAGES/splash.jpg');
-            background-size: cover;
-            background-position: center;
-            filter: blur(3px);
-            transform: scale(1);
-            animation: zoomIn 10s ease-out forwards;
-            z-index: 1;
-        }
-
-        /* ✨ Glow text effect */
-        #splash h1 {
-            text-shadow:
-                0 0 10px rgba(255, 255, 255, 0.9),
-                0 0 20px rgba(255, 255, 255, 0.7),
-                0 0 40px rgba(255, 255, 255, 0.5);
-            animation: textGlow 2s ease-in-out infinite alternate;
-        }
-
-        /* --- ANIMATIONS --- */
-
-        /* Background Zoom */
-        @keyframes zoomIn {
-            0% {
-                transform: scale(1);
-            }
-
-            100% {
-                transform: scale(1.15);
-            }
-        }
-
-        /* Glow pulsing text */
-        @keyframes textGlow {
-            0% {
-                text-shadow:
-                    0 0 6px rgb(83, 176, 181),
-                    0 0 12px rgb(83, 176, 181),
-                    0 0 24px rgb(83, 176, 181);
-            }
-
-            100% {
-                text-shadow:
-                    0 0 20px white,
-                    0 0 35px white,
-                    0 0 60px white;
-            }
-        }
-
-        /* Splash fade-out */
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-            }
-        }
-    </style>
 </head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body,
+    html {
+        height: 100%;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    /* 🔥 SPLASH CONTAINER */
+    #splash {
+        position: fixed;
+        inset: 0;
+        color: orangered;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.5rem;
+        text-align: center;
+        z-index: 2;
+        animation: fadeOut 1s ease-out forwards;
+        animation-delay: 9s;
+        /* fades out after ~9s */
+    }
+
+    /* 🔥 Background Image + 3-Color Gradient + Blur + Zoom */
+    #bg {
+        position: fixed;
+        inset: 0;
+        background:
+            linear-gradient(135deg,
+                rgba(25, 192, 127, 0.4),
+                rgba(127, 192, 25, 0.2),
+                rgba(0173, 025, 192, 0.4)),
+            url('IMAGES/splash.jpg');
+        background-size: cover;
+        background-position: center;
+        filter: blur(3px);
+        transform: scale(1);
+        animation: zoomIn 10s ease-out forwards;
+        z-index: 1;
+    }
+
+    /* ✨ Glow text effect */
+    #splash h1 {
+        text-shadow:
+            0 0 10px rgba(255, 255, 255, 0.9),
+            0 0 20px rgba(255, 255, 255, 0.7),
+            0 0 40px rgba(255, 255, 255, 0.5);
+        animation: textGlow 2s ease-in-out infinite alternate;
+    }
+
+    /* --- ANIMATIONS --- */
+
+    /* Background Zoom */
+    @keyframes zoomIn {
+        0% {
+            transform: scale(1);
+        }
+
+        100% {
+            transform: scale(1.15);
+        }
+    }
+
+    /* Glow pulsing text */
+    @keyframes textGlow {
+        0% {
+            text-shadow:
+                0 0 6px rgb(83, 176, 181),
+                0 0 12px rgb(83, 176, 181),
+                0 0 24px rgb(83, 176, 181);
+        }
+
+        100% {
+            text-shadow:
+                0 0 20px white,
+                0 0 35px white,
+                0 0 60px white;
+        }
+    }
+
+    /* Splash fade-out */
+    @keyframes fadeOut {
+        to {
+            opacity: 0;
+        }
+    }
+</style>
 
 <body>
 
