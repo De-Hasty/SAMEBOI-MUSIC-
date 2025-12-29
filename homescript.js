@@ -8,23 +8,26 @@ menuBtn?.addEventListener('click', () => {
     menuBtn.setAttribute('aria-expanded', String(!isOpen));
 });
 
-// Only one audio plays at a time
-document.addEventListener('play', e => {
-    document.querySelectorAll('audio').forEach(a => {
-        if (a !== e.target) a.pause();
-    });
-}, true);
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-        const href = a.getAttribute('href');
-        if (href.length > 1) {
-            e.preventDefault();
-            document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
+
 
 // Keyboard menu toggle
 menuBtn?.addEventListener('keyup', e => { if (e.key === 'Enter') menuBtn.click(); });
+
+
+function showSection(sectionId) {
+    // hide all
+    const sections =
+        document.querySelectorAll('.page').forEach(section => {
+            section.classList.remove('active');
+        });
+
+    // show selected
+    const activesection =
+        document.getElementById(sectionId).classList.add('active');
+}
+// show HOME by defualt
+
+window.addEventListener('DOMContentLoaded', () => {
+    showSection('home');
+});
